@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zJh-Ba-wHZ">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--To Do List-->
+        <scene sceneID="3zq-Hm-7nz">
+            <objects>
+                <tableViewController id="bjR-Xk-EtH" customClass="MyTableViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="22" sectionFooterHeight="22" id="7bk-I1-LhK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ToDoCell" rowHeight="72" id="xl4-DZ-cS5" customClass="MyTableViewCell" customModule="ToDoList" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xl4-DZ-cS5" id="nVi-DS-haF">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ItemName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFC-Ls-jmx">
+                                            <rect key="frame" x="88" y="8" width="178" height="27"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ItemType" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skt-Qb-oaW">
+                                            <rect key="frame" x="88" y="43" width="178" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUi-P0-fD7">
+                                            <rect key="frame" x="6" y="3" width="74" height="65"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellImage" destination="dUi-P0-fD7" id="7we-Xs-Dvl"/>
+                                    <outlet property="cellItemName" destination="tFC-Ls-jmx" id="exl-kr-ym7"/>
+                                    <outlet property="cellItemType" destination="skt-Qb-oaW" id="mRR-7b-XtW"/>
+                                    <segue destination="AEi-uE-DLi" kind="push" identifier="ShowItemDetail" id="bXc-Zj-hat"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bjR-Xk-EtH" id="xPY-kS-kbC"/>
+                            <outlet property="delegate" destination="bjR-Xk-EtH" id="7go-KJ-NY0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="To Do List" id="mFq-ru-MS1">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="L1t-cc-O4i">
+                            <connections>
+                                <segue destination="Dwd-xP-yLy" kind="modal" identifier="AddNewItem" id="SS9-8I-Lai"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t2s-x0-0DQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="885" y="319"/>
+        </scene>
+        <!--My Detail View Controller-->
+        <scene sceneID="yJ7-qb-h0i">
+            <objects>
+                <viewController id="AEi-uE-DLi" customClass="MyDetailViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kdw-aq-490"/>
+                        <viewControllerLayoutGuide type="bottom" id="i4G-cJ-BDn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FtW-Ui-dUW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ShowTime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aex-q0-BWd">
+                                <rect key="frame" x="86" y="185" width="149" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c4p-xY-lVB">
+                                <rect key="frame" x="40" y="287" width="240" height="128"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ShowItem" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBD-8E-uk1">
+                                <rect key="frame" x="86" y="129" width="149" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3BJ-RS-eIx"/>
+                    <connections>
+                        <outlet property="ImageItem" destination="c4p-xY-lVB" id="ZIf-aT-sVe"/>
+                        <outlet property="LabelItem" destination="BBD-8E-uk1" id="MTM-MO-guX"/>
+                        <outlet property="LabelTime" destination="Aex-q0-BWd" id="6Ja-ze-Inc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n46-RI-qMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1398" y="319"/>
+        </scene>
+        <!--To Do-->
+        <scene sceneID="mB2-Ni-FJi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dtk-mk-eEA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="To Do" id="wJm-SO-nxR"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rPE-GS-8If">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bjR-Xk-EtH" kind="relationship" relationship="rootViewController" id="144-5o-Fcv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4hb-iE-vsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="465" y="319"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="i7B-6P-8MO">
+            <objects>
+                <navigationController id="1jA-3h-Iqm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="W1C-XL-Wzi"/>
+                    <navigationItem key="navigationItem" id="WLm-Uj-Ovd"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xdz-YX-MN8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="iai-pn-wzP" kind="relationship" relationship="rootViewController" id="dqz-Rt-gmt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o87-Mq-xmR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="480" y="985"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="NR4-Ag-50N">
+            <objects>
+                <viewController title="About" id="iai-pn-wzP" customClass="AboutViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y2V-q4-Sew"/>
+                        <viewControllerLayoutGuide type="bottom" id="RbC-PV-qlT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SaP-N6-hf6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pFD-V6-hZI">
+                                <rect key="frame" x="30" y="270" width="260" height="200"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="About the author:" translatesAutoresizingMaskIntoConstraints="NO" id="VPT-XN-IuM">
+                                <rect key="frame" x="40" y="105" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Wuh-IU-tga"/>
+                    <connections>
+                        <outlet property="AboutAuthor" destination="VPT-XN-IuM" id="7eW-1W-guA"/>
+                        <outlet property="AboutImageText" destination="pFD-V6-hZI" id="B5o-TP-JSZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kqv-sI-pQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="894" y="985"/>
+        </scene>
+        <!--Add Item View Controller-->
+        <scene sceneID="kl9-iX-6v4">
+            <objects>
+                <viewController id="Dwd-xP-yLy" customClass="AddItemViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UiZ-Kp-HfS"/>
+                        <viewControllerLayoutGuide type="bottom" id="V8J-sL-AGH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1WV-ue-cEO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter To Do Item Name" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZOu-fu-qZN">
+                                <rect key="frame" x="83" y="68" width="181" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter Time" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FQ7-wS-Jdu">
+                                <rect key="frame" x="83" y="113" width="181" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter Image File Name" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5lW-mi-bH3">
+                                <rect key="frame" x="83" y="167" width="181" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5IL-3B-JTQ">
+                                <rect key="frame" x="204" y="289" width="60" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.84705889225006104" blue="0.23921570181846619" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ClickedSave:" destination="Dwd-xP-yLy" eventType="touchUpInside" id="i7c-y8-jAN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NfL-gL-eh7">
+                                <rect key="frame" x="83" y="289" width="60" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.13333334028720856" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ClickedCancel:" destination="Dwd-xP-yLy" eventType="touchUpInside" id="209-iI-bFO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="AddImageFile" destination="5lW-mi-bH3" id="gre-rZ-STR"/>
+                        <outlet property="AddName" destination="ZOu-fu-qZN" id="33U-ID-9GN"/>
+                        <outlet property="AddTime" destination="FQ7-wS-Jdu" id="hue-uZ-U09"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5bw-3K-i0J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1260" y="985"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="wZW-95-EEF">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zJh-Ba-wHZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="DKG-dL-A4k">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="dtk-mk-eEA" kind="relationship" relationship="viewControllers" id="YlL-M2-mg2"/>
+                        <segue destination="1jA-3h-Iqm" kind="relationship" relationship="viewControllers" id="AWp-hI-2FX"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CgO-Ur-6az" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-49" y="538"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
