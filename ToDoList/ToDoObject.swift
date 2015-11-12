@@ -7,17 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
-class ToDoObject: NSObject {
-   var iName = ""
-  var iTime = ""
-   var iFile = ""
-   var iCheck = false
+class ToDoObject: NSManagedObject {
+  @NSManaged var iName : String!
+  @NSManaged var iTime : String!
+  @NSManaged var iFile : String!
+  @NSManaged var iCheck : NSNumber!
   
-  init(iName: String, iTime: String, iFile: String, iCheck: Bool){
-    self.iName = iName
-    self.iTime = iTime
-    self.iFile = iFile
-    self.iCheck = iCheck
+  
+  
   }
-}

@@ -10,6 +10,7 @@
 		715B02331BCF5EA20079AF0D /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B02321BCF5EA20079AF0D /* MyTableViewCell.swift */; };
 		716A4EA41BEE61AB0009CA8F /* ToDoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716A4EA31BEE61AB0009CA8F /* ToDoObject.swift */; };
 		716F1FC31BF17606005A748B /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F1FC21BF17606005A748B /* AddItemViewController.swift */; };
+		7182BAA71BF1981000818767 /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7182BAA51BF1981000818767 /* ToDoList.xcdatamodeld */; };
 		71CFE9281BBCCDB90038065F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFE9271BBCCDB90038065F /* AppDelegate.swift */; };
 		71CFE92F1BBCCDB90038065F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CFE92E1BBCCDB90038065F /* Images.xcassets */; };
 		71CFE9321BBCCDB90038065F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CFE9301BBCCDB90038065F /* LaunchScreen.xib */; };
@@ -35,6 +36,7 @@
 		715B02321BCF5EA20079AF0D /* MyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		716A4EA31BEE61AB0009CA8F /* ToDoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoObject.swift; sourceTree = "<group>"; };
 		716F1FC21BF17606005A748B /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		7182BAA61BF1981000818767 /* ToDoList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoList.xcdatamodel; sourceTree = "<group>"; };
 		71CFE9221BBCCDB80038065F /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CFE9261BBCCDB90038065F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71CFE9271BBCCDB90038065F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				71CFE94B1BBCD5850038065F /* xjason.jpg */,
 				71CFE9271BBCCDB90038065F /* AppDelegate.swift */,
+				7182BAA51BF1981000818767 /* ToDoList.xcdatamodeld */,
 				71CFE9471BBCCEC30038065F /* MyTableViewController.swift */,
 				71CFE92E1BBCCDB90038065F /* Images.xcassets */,
 				715B02321BCF5EA20079AF0D /* MyTableViewCell.swift */,
@@ -174,11 +177,13 @@
 		71CFE91A1BBCCDB80038065F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "David Gudeman";
 				TargetAttributes = {
 					71CFE9211BBCCDB80038065F = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 2NKLZJVG9L;
 					};
 					71CFE9361BBCCDB90038065F = {
 						CreatedOnToolsVersion = 6.4;
@@ -238,6 +243,7 @@
 				716F1FC31BF17606005A748B /* AddItemViewController.swift in Sources */,
 				71F0E0961BDF181600FDD301 /* AboutViewController.swift in Sources */,
 				71F0E0941BDEEE9300FDD301 /* MyDetailViewController.swift in Sources */,
+				7182BAA71BF1981000818767 /* ToDoList.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +362,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ToDoList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -366,6 +373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ToDoList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -437,6 +445,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7182BAA51BF1981000818767 /* ToDoList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7182BAA61BF1981000818767 /* ToDoList.xcdatamodel */,
+			);
+			currentVersion = 7182BAA61BF1981000818767 /* ToDoList.xcdatamodel */;
+			path = ToDoList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 71CFE91A1BBCCDB80038065F /* Project object */;
 }

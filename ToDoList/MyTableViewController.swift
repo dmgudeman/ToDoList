@@ -7,22 +7,24 @@
 //
 
 import UIKit
+import CoreData
 
 class MyTableViewController: UITableViewController, UISearchResultsUpdating{
   
-    
+    let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var MyToDo : [ToDoObject] = []
   
 //  var toDoItems = ["buy a clown mask", "buy a gun", "steal a car", "rob a bank"]
 //  var toDoTimes = ["10:00 am", "11:00 am", "12:00 pm", "1:00 pm"]
 //  var toDoImages = [ "ajax", "xjason", "jquery", "ajax"]
   
-  var MyToDo = [
-    ToDoObject(iName: "buy a clown mask", iTime: "10:00am", iFile: "ajax", iCheck: false),
-   
-    ToDoObject(iName: "steal a car", iTime: "12:00pm", iFile: "jquery", iCheck: false),
-    ToDoObject(iName: "rob a bank", iTime: "1:00pm", iFile: "ajax", iCheck: false),
-     ToDoObject(iName: "buy a gun", iTime: "11:00am", iFile: "xjason", iCheck: false)
-  ]
+//  var MyToDo = [
+//    ToDoObject(iName: "buy a clown mask", iTime: "10:00am", iFile: "ajax", iCheck: false),
+//   
+//    ToDoObject(iName: "steal a car", iTime: "12:00pm", iFile: "jquery", iCheck: false),
+//    ToDoObject(iName: "rob a bank", iTime: "1:00pm", iFile: "ajax", iCheck: false),
+//     ToDoObject(iName: "buy a gun", iTime: "11:00am", iFile: "xjason", iCheck: false)
+  //]
   
   var searchController: UISearchController!
   var searchResults : [ToDoObject] = []
@@ -37,6 +39,15 @@ class MyTableViewController: UITableViewController, UISearchResultsUpdating{
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+      let fr = NSFetchRequest(entityName: "ToDoObject")
+      var e : NSError?
+      
+      MyToDo = moc?.executeFetchRequest(fr, error: &e) as! [ToDoObject]
+      
+      if e != nil {
+        println("viewDidLoad Failed to retrieve record: \(e!.localizedDescription)")
+      }
+      
       navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
       
       self.searchController = UISearchController(searchResultsController: nil)
@@ -48,13 +59,24 @@ class MyTableViewController: UITableViewController, UISearchResultsUpdating{
       self.tableView.tableHeaderView = self.searchController.searchBar
   }
 
-  override func viewDidAppear(animated: Bool) {
-  self.tableView.reloadData()
+    override func viewDidAppear(animated: Bool) {
+      let fr = NSFetchRequest(entityName: "ToDoObject")
+      var e : NSError?
+    
+      MyToDo = moc?.executeFetchRequest(fr, error: &e) as! [ToDoObject]
+    
+      if e != nil {
+        println("viewDidAppear Failed to retrieve record: \(e!.localizedDescription)")
+      }
+      else {
+        self.tableView.reloadData()
+      }
+
   }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
+  }
   
   
     // MARK: - Table view data source
@@ -88,36 +110,35 @@ class MyTableViewController: UITableViewController, UISearchResultsUpdating{
       
     var todoItem : ToDoObject!
     if searchController.active {
-      print("\([indexPath.row])")
-      print(MyToDo[indexPath.row].iName)
+//      print("\([indexPath.row])")
+//      print(MyToDo[indexPath.row].iName)
       todoItem = searchResults[indexPath.row]
     }
     else {
       todoItem = MyToDo[indexPath.row]
     }
-      cell.cellItemName?.text = MyToDo[indexPath.row].iName
-      cell.cellItemType?.text = MyToDo[indexPath.row].iTime
-    
-      cell.accessoryType = todoItem.iCheck ? .Checkmark : .None
-      
+      cell.cellItemName?.text = todoItem.iName
+      cell.cellItemType?.text = todoItem.iTime
+      cell.accessoryType = todoItem.iCheck.boolValue ? .Checkmark : .None
+       cell.cellImage?.image = UIImage(named: todoItem.iFile)
       // display rounded cells
-      cell.cellImage?.frame = CGRect (x: 0.0, y: 0.0, width: 60, height: 60)
-      cell.cellImage?.layer.cornerRadius =  cell.cellImage.frame.size.width/1.75
-      cell.cellImage?.clipsToBounds = true
-      cell.cellImage?.layer.masksToBounds = true
-      cell.cellImage?.image = UIImage(named: MyToDo[indexPath.row].iFile)
-      
-    
-      //Define the initial state of the cell before fade in
-      cell.alpha = 0
-      UIView.animateWithDuration(0.5, animations: {cell.alpha = 1})
-    
-      var rotationTransform: CATransform3D = CATransform3DIdentity
-      rotationTransform = CATransform3DTranslate(rotationTransform, -500, 0, 0)
-    
-      cell.cellImage?.layer.transform = rotationTransform
-    
-      UIView.animateWithDuration(0.5, animations: { cell.cellImage.layer.transform = CATransform3DIdentity})
+//      cell.cellImage?.frame = CGRect (x: 0.0, y: 0.0, width: 60, height: 60)
+//      cell.cellImage?.layer.cornerRadius =  cell.cellImage.frame.size.width/1.75
+//      cell.cellImage?.clipsToBounds = true
+//      cell.cellImage?.layer.masksToBounds = true
+//     
+//      
+//    
+//      //Define the initial state of the cell before fade in
+//      cell.alpha = 0
+//      UIView.animateWithDuration(0.5, animations: {cell.alpha = 1})
+//    
+//      var rotationTransform: CATransform3D = CATransform3DIdentity
+//      rotationTransform = CATransform3DTranslate(rotationTransform, -500, 0, 0)
+//    
+//      cell.cellImage?.layer.transform = rotationTransform
+//    
+//      UIView.animateWithDuration(0.5, animations: { cell.cellImage.layer.transform = CATransform3DIdentity})
 
         return cell
     }
@@ -125,8 +146,8 @@ class MyTableViewController: UITableViewController, UISearchResultsUpdating{
   override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
     var tdItem = (searchController.active) ? searchResults[indexPath.row] :
       MyToDo[indexPath.row]
-    tdItem.iCheck = !(tdItem.iCheck)
-    if (tdItem.iCheck)
+    tdItem.iCheck = !(tdItem.iCheck.boolValue)
+    if (tdItem.iCheck.boolValue)
     {
       self.tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .Checkmark
     }
@@ -202,7 +223,7 @@ class MyTableViewController: UITableViewController, UISearchResultsUpdating{
         //var NewItem = ToDoObject.self
         var addViewController = segue.destinationViewController as!
           AddItemViewController
-        addViewController.NewToDo = addData
+      //  addViewController.NewToDo = addData
         
       }
     }

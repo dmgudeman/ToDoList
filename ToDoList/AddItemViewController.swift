@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
-class AddItemViewController: UIViewController {
+class AddItemViewController: UIViewController, NSCoding {
 
   @IBOutlet var AddName: UITextField!
   @IBOutlet var AddTime: UITextField!
   @IBOutlet var AddImageFile: UITextField!
-  var NewToDo : (ToDoObject ->())!
+  
+  var NewToDo : ToDoObject!
   
   
     override func viewDidLoad() {
@@ -42,13 +44,27 @@ class AddItemViewController: UIViewController {
   }
 
   @IBAction func ClickedSave(sender: AnyObject) {
-//    self.NewToDo?.iName = self.AddName.text
-//    self.NewToDo?.iTime = self.AddTime.text
-//    self.NewToDo?.iFile = self.AddImageFile.text
-//    self.NewToDo?.iCheck = false
+    let myMOC = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    NewToDo(ToDoObject(iName: self.AddName.text, iTime: self.AddTime.text, iFile: self.AddImageFile.text, iCheck: false))
+ 
+    NewToDo = NSEntityDescription.insertNewObjectForEntityForName("ToDoObject", inManagedObjectContext: myMOC!) as! ToDoObject
+      
+      //NSEntityDescription.insertNewObjectForName("ToDoObject", inManagedObjectContext: myMOC!) as! ToDoObject
     
+    
+      NewToDo.iName = self.AddName.text
+      NewToDo.iTime = self.AddTime.text
+      NewToDo.iFile = self.AddImageFile.text
+      NewToDo.iCheck = 0
+    
+    var saveErr : NSError?
+    if myMOC!.save(&saveErr) != true {
+      println( "Insert to DB Error: \(saveErr?.localizedDescription)")
+      return
+    }
+    
+//   NewToDo(ToDoObject(iName: self.AddName.text, iTime: self.AddTime.text, iFile: self.AddImageFile.text, iCheck: false))
+//    
     self.dismissViewControllerAnimated(true, completion: nil )
   }
 }
